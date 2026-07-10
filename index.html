@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Old vs New Tax Regime Calculator</title>
+
+    <meta name="description"
+        content="Calculate and compare income tax under old and new tax regimes with deductions and exemptions.">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+
+        <div class="container header-container">
+
+            <div class="logo">
+                Tax Calculator
+            </div>
+
+            <nav>
+                <a href="#calculator">Calculator</a>
+                <a href="#comparison">Comparison</a>
+                <a href="#about">About</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <h1>
+                Old vs New Tax Regime Calculator
+            </h1>
+
+            <p>
+                Compare your income tax liability under both tax regimes
+                and choose the better option.
+            </p>
+
+            <button onclick="scrollToCalculator()" class="primary-btn">
+                Start Calculation
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Calculator Section -->
+
+    <section id="calculator" class="calculator-section">
+
+        <div class="container">
+
+            <h2>
+                Income Details
+            </h2>
+
+
+            <div class="form-card">
+
+
+                <div class="form-grid">
+
+
+                    <!-- Financial Year -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Financial Year
+                        </label>
+
+                        <select id="financialYear">
+
+                            <option value="2025-26">
+                                FY 2025-26
+                            </option>
+
+                            <option value="2026-27">
+                                FY 2026-27
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Age Category -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Age Category
+                        </label>
+
+                        <select id="ageCategory">
+
+                            <option value="normal">
+                                Below 60 Years
+                            </option>
+
+                            <option value="senior">
+                                60 Years and Above
+                            </option>
+
+                            <option value="superSenior">
+                                80 Years and Above
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Salary -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Salary Income (₹)
+                        </label>
+
+                        <input type="number"
+                               id="salary"
+                               placeholder="Enter annual salary">
+
+                    </div>
+
+
+
+                    <!-- Other Income -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Other Income (₹)
+                        </label>
+
+                        <input type="number"
+                               id="otherIncome"
+                               placeholder="Interest, Business etc">
+
+                    </div>
+
+
+
+                    <!-- Rental Income -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Rental Income (₹)
+                        </label>
+
+                        <input type="number"
+                               id="rentalIncome"
+                               placeholder="House property income">
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <!-- Deductions -->
+
+
+            <h2>
+                Deductions & Exemptions
+            </h2>
+
+
+            <div class="form-card">
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            HRA Exemption (₹)
+                        </label>
+
+                        <input type="number"
+                               id="hra"
+                               placeholder="HRA exemption">
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Section 80C (₹)
+                        </label>
+
+                        <input type="number"
+                               id="section80c"
+                               placeholder="LIC, PPF, ELSS, EPF">
+
+                    </div>
+
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Section 80D (₹)
+                        </label>
+
+                        <input type="number"
+                               id="section80d"
+                               placeholder="Medical insurance">
+
+                    </div>
+
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Home Loan Interest (₹)
+                        </label>
+
+                        <input type="number"
+                               id="homeLoan"
+                               placeholder="Interest on housing loan">
+
+                    </div>
+
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            NPS Contribution 80CCD (₹)
+                        </label>
+
+                        <input type="number"
+                               id="nps"
+                               placeholder="Additional NPS">
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Other Deductions (₹)
+                        </label>
+
+                        <input type="number"
+                               id="otherDeduction"
+                               placeholder="Other eligible deductions">
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="action-area">
+
+                <button class="calculate-btn"
+                        onclick="calculateTax()">
+
+                    Calculate Tax
+
+                </button>
+
+
+                <button class="reset-btn"
+                        onclick="resetCalculator()">
+
+                    Reset
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+    <!-- Result Section -->
+
+
+    <section class="result-section">
+
+
+        <div class="container">
+
+
+            <h2>
+                Tax Calculation Result
+            </h2>
+
+
+
+            <div class="result-grid">
+
+
+                <div class="result-card old">
+
+                    <h3>
+                        Old Tax Regime
+                    </h3>
+
+
+                    <p>
+                        Taxable Income
+                    </p>
+
+                    <h2 id="oldIncome">
+                        ₹0
+                    </h2>
+
+
+                    <p>
+                        Tax Payable
+                    </p>
+
+                    <h2 id="oldTax">
+                        ₹0
+                    </h2>
+
+
+                </div>
+
+
+
+
+
+                <div class="result-card new">
+
+
+                    <h3>
+                        New Tax Regime
+                    </h3>
+
+
+                    <p>
+                        Taxable Income
+                    </p>
+
+
+                    <h2 id="newIncome">
+                        ₹0
+                    </h2>
+
+
+                    <p>
+                        Tax Payable
+                    </p>
+
+
+                    <h2 id="newTax">
+                        ₹0
+                    </h2>
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+
+    <!-- Comparison -->
+
+
+    <section id="comparison"
+             class="comparison-section">
+
+
+        <div class="container">
+
+
+            <h2>
+                Tax Comparison
+            </h2>
+
+
+
+            <div class="comparison-card">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Particular
+                            </th>
+
+
+                            <th>
+                                Old Regime
+                            </th>
+
+
+                            <th>
+                                New Regime
+                            </th>
+
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <tr>
+
+                            <td>
+                                Taxable Income
+                            </td>
+
+
+                            <td id="compareOldIncome">
+                                ₹0
+                            </td>
+
+
+                            <td id="compareNewIncome">
+                                ₹0
+                            </td>
+
+
+                        </tr>
+
+
+
+                        <tr>
+
+                            <td>
+                                Income Tax
+                            </td>
+
+
+                            <td id="compareOldTax">
+                                ₹0
+                            </td>
+
+
+                            <td id="compareNewTax">
+                                ₹0
+                            </td>
+
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Better Option
+                            </td>
+
+
+                            <td colspan="2"
+                                id="recommendation">
+
+                                Calculate to see result
+
+                            </td>
+
+
+                        </tr>
+
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+    <!-- About -->
+
+
+    <section id="about"
+             class="about-section">
+
+
+        <div class="container">
+
+
+            <h2>
+                About Tax Calculator
+            </h2>
+
+
+            <p>
+
+                This calculator helps individuals compare tax
+                liability between old and new income tax regimes.
+                Enter income details and eligible deductions to
+                understand the difference.
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+    <!-- Footer -->
+
+
+    <footer class="footer">
+
+
+        <div class="container">
+
+            <p>
+                © 2026 Tax Calculator. All rights reserved.
+            </p>
+
+
+        </div>
+
+
+    </footer>
+
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
